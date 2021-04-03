@@ -11,7 +11,6 @@ body {
 *:before,
 *:after {
     box-sizing: border-box;
-    content: '';
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +81,12 @@ p {
 
 .nav__link:hover {
     opacity: 1;
+}
+
+/* Burger */
+
+.burger {
+    display: none;
 }
 
 /* Intro */
@@ -202,6 +207,7 @@ p {
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     z-index: 1;
+    min-width: 100%;
 }
 .works__content {
     width: 100%;
@@ -329,17 +335,26 @@ p {
     fill: #000;
 }
 
-/* Reviers */ 
+/* Reviews */ 
 
-.reviers {
+.reviews {
     overflow: hidden;
     background-color: #53354a;
 }
-.reviers__item {
+.reviews__item {
     display: flex;
     flex-wrap: wrap;
 }
-.reviers__photo {
+
+.reviews__slider {
+    overflow: hidden;
+    height: 500px;
+}
+
+.reviews__slider.slick-initialized {
+    height: auto;
+}
+.reviews__photo {
     width: 50%;
     height: 500px;
     position: relative;
@@ -353,7 +368,43 @@ p {
     transform: translateY(-50%);
 }
 
-.reviers__content {
+.slick-dots {
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.slick-dots button {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    border: none;
+    height: 20px;
+    padding: 0;
+    font-size: 0;
+    color: transparent;
+    opacity: 0.5;
+    outline: none;
+    cursor: pointer;
+}
+
+.slick-dots li {
+    margin: 0 5px;
+}
+
+.slick-dots .slick-active button {
+    opacity: 1;
+}
+
+.reviews__content {
     width: 50%;
     display: flex;
     padding-left: 80px;
@@ -361,7 +412,7 @@ p {
     justify-content: center;
 }
 
-.reviers__text {
+.reviews__text {
     font-family: 'Cardo', sans-serif;
     font-style: italic;
     font-size: 36px;
@@ -369,7 +420,7 @@ p {
     margin-bottom: 25px;
     color: #fff;
 }
-.reviers__author {
+.reviews__author {
     text-transform: uppercase;
     color: #fff;
     font-weight: 700;
@@ -459,8 +510,203 @@ p {
 
 /* CSS Mobile */
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {  
+    /* Works */
+    .works__item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* Nav */
+    .nav {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 5%;
+        flex-direction: column;
+        width: 50%;
+        text-align: right;  
+        background-color: #31344e;
+        height: 100vh;
+    }
+
+    .nav.show {
+        display: flex;
+    }
+
+    .nav__link {
+        padding: 9px 15px;
+        position: relative;
+        top: 80px;
+    }
+
+    /* Burger */
+    .burger {
+        display: block;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 9px 1px;
+        outline: none;
+    }
+
+    .burger__item {
+        display: block;
+        background-color: #fff;
+        width: 28px;
+        height: 3px;
+        font-size: 0;
+        color: transparent;
+        position: relative;
+    }
+
+    .burger__item:before,
+    .burger__item:after {
+        content: '';
+        background-color: #fff;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+
+    .burger__item:before {
+        width: 30px;
+        content: '';
+        top: -8px;
+    }
+
+    .burger__item:after {
+        width: 26px;
+        bottom: -8px;
+        content: '';
+    }
+
+    /* Intro */
     .intro__title {
         font-size: 40px;
     }
+
+    /* Btn */
+
+    /* Features */
+    .features__item {
+        width: 50%;
+    }
+
+    /* Team */
+    .team__item {
+        width: 50%;
+        text-align: center;
+    }
+
+    .team__photo {
+        margin-right: auto;
+        margin-left: auto;
+    }  
+
+    /* Social */
+    .social {
+        justify-content: center;
+    }
+
+    /* Reviews */
+    .reviews__photo {
+        width: 100%;
+        overflow: hidden;
+        margin: 15px 0 40px;
+    }
+
+    .reviews__content {
+        width: 100%;
+        padding-left: 0;
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 414px) {  
+    /* Reviews */
+    .reviers__img {
+        right: -100px;
+    }
+}
+
+@media (max-width: 767px) {
+    
+    /* Intro */
+    .intro {
+        height: auto;
+        padding-top: 130px;
+        padding-bottom: 30px;   
+    }
+
+    .intro__title {
+        font-size: 30px;
+    }
+
+    .intro__subtitle {
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    /* Features */
+    .features {
+        margin: 40px 0;}
+
+    .features__item {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Works */
+    .works__item {
+        width: 100%;
+        height: 300px;  
+    }
+
+    /* Team */
+    .team {
+        margin: 60px 0 30px;
+    }
+
+    .team__item {
+        width: 100%;
+    }
+
+    /* Reviews */
+    .reviews__text {
+        font-size: 25px;
+    }
+
+    /* Download */
+    .download {
+        margin: 50px 0;
+    }
+
+    .download__title {
+        font-size: 24px;
+    }
+
+    /* Btn */
+    .btn--long {
+        min-width: 260px;
+    }
+
+    /* Footer */ 
+    .footer__inner {
+        padding: 30px 0;
+    }
+    .footer__block {
+        margin-bottom: 30px;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .footer__block:last-child {
+        margin-bottom: 0;
+    }
+
 }
