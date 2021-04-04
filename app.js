@@ -17,7 +17,7 @@ $(function () {
     });
 
     function checkScroll(header, introH) {
-        if (scrollPos > introH) {
+        if (scrollPos > introH - 60) {
             header.addClass("fixed");
         } else {
             header.removeClass("fixed");
@@ -34,17 +34,22 @@ $(function () {
         nav.removeClass('show');
 
         $('html, body').animate({
-            scrollTop: elementOffset - 70
+            scrollTop: elementOffset - 60
         }, 700);
 
     });
 
     /* Burger */
-    $('#navToggle').on("click", function (e) {
+    navToggle.on("click", function (e) {
         e.preventDefault();
 
         nav.addClass('show');
     })
+
+    $('.header__burger').click(function (event) {
+        $('.header__burger,.nav').toggleClass('active');
+        // $('body').toggleClass('lock');
+    });
 
     /* Reviews */
     let slider = $('#reviewsSlider');
